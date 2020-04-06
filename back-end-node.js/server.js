@@ -1,10 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser')
+const exphbs = require('express-handlebars')
+const nodemailer = require('nodemailer')
+const cookieparser = require('cookie-parser')
 require('dotenv').config();
 
+
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cookieparser());
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -21,6 +28,13 @@ connection.once('open', () => {
 const usersRouter = require('./routes/users')
 
 app.use('/users', usersRouter)
+
+app.post('/api/sendMail',(req, res) => {
+    
+    console.log(req.body)
+})
+
+
 
 
 app.listen(port, () => {

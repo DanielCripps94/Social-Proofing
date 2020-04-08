@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const nodemailer = require('nodemailer')
 const cookieparser = require('cookie-parser')
+// const { sendEmail } = require('./mailer')
 require('dotenv').config();
 
 
@@ -29,11 +30,15 @@ const usersRouter = require('./routes/users')
 
 app.use('/users', usersRouter)
 
+const { sendEmail } = require('./mailer');
+
 app.post('/api/sendMail',(req, res) => {
     
     console.log(req.body)
 
-    
+
+    sendEmail(req.body.email, req.body.name)
+
 })
 
 

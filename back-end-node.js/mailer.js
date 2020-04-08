@@ -1,5 +1,5 @@
 const mailer = require('nodemailer')
-const { Hello } = require("/.hello_template")
+// const { Hello } = require("/.hello_template")
 
 
 const getEmailData = (to, name, template) => {

@@ -39,4 +39,16 @@ const sendEmail = (to, name, type) => {
     })
 
     const mail = getEmailData(to, name, type)
+
+    smtpTransport.sendMail(mail, function(error, response) {
+        if(error) {
+            console.log(error)
+        } else {
+            console.log("email sent successfully")
+        }
+    smtpTransport.close();
+    })
+
 }
+
+module.exports = { sendEmail }

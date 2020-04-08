@@ -32,6 +32,8 @@ app.use('/users', usersRouter)
 app.post('/api/sendMail',(req, res) => {
     
     console.log(req.body)
+
+    
 })
 
 
